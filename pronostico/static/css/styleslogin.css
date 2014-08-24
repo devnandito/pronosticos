@@ -1,0 +1,108 @@
+body
+{
+	/*background: #333;*/
+	background: url("../img/background.jpg");
+	color: #FFF;
+	font-family: 'Trebuchet MS', Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: center;
+}
+footer
+{
+	/*background: rgba(210,93,18,0.3);*/
+	background: rgba(0,93,18,0.3);
+	bottom: 0;
+	height: 50px;
+	left: 0;
+	padding: 1em 2% 1em 2em;
+	margin: 0 0 0 0;
+	position: fixed;
+	width: 100%;
+}
+header
+{
+	margin: auto 0;
+	padding: 0.5em 0;
+	width:100%;
+	
+}
+nav
+{
+	text-align:right;
+	width:100%;
+}
+nav li
+{
+	display: inline-block;
+	list-style:none;
+}
+nav li a
+{
+	color: #DDD;
+	text-decoration:none;
+}
+table
+{
+	/*border: 1px solid #eee;*/
+	border-radius: 0.5em;
+	margin: 0 auto;
+	padding: 0.5em 1em 0.5em 0.5em;
+	width: 25%;
+}
+table input[type="text"],input[type="password"],input[type="submit"]
+{
+	border-radius: 0.5em;
+	font-family: 'Trebuchet MS', Helvetica, sans-serif;
+	font-size: 20px;
+	margin: 0 auto;
+	width: 100%;
+}
+table td
+{
+	text-align: center;
+	width: 20%;
+}
+table th
+{
+	text-align: center;
+	width: 100%;
+}
+.boton
+{
+	background: #D23D15;
+	border: none;
+	border-radius: 0.5em;
+	color: white;
+	cursor:pointer;
+	font-size:15px;
+	height:2.3em;
+	margin: 0.5em 0.5em 0.5em 0.5em;
+	padding: 0.5em 1em;
+	text-decoration:none;
+}
+.boton:hover
+{
+	background: #A23A10;
+	color: black;
+}
+.error
+{
+	color:red;
+	font-size: 0.8em;
+}
+#condicion
+{
+	color: #000;
+	text-align: left;
+	width: 70%;
+}
+#foot
+{
+	color: #EEE;
+	font-size: 1em;
+	text-align: center;
+}
+#login
+{
+	margin: 250px 0 0 0;
+}

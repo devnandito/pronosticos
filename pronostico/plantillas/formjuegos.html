@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<form id='formulario' method='post' action=''>{% csrf_token %}
+		<table class="table1">
+			<tr>
+				<th colspan="2">{{ juegos.fkfecha }}</th>
+			</tr>
+			<tr>
+				<th>Local: </th>
+				<th>{{ juegos.fklocal }}</th>
+			</tr>
+			<tr>
+				<th>Visita: </th>
+				<th>{{ juegos.fkvisita }}</th>
+			</tr>
+			<tr>
+				<th>Resultado</th>
+				<td>{{ form.fkres }}</td>
+			</tr>
+			<tr>
+				<td><a href="/pronostico" class="boton"/>Volver</td>
+				<td><input class="boton" type='submit' value='Actualizar' /></td>
+			</tr>
+		</table>
+	</form>
+{% endblock %}

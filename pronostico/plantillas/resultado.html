@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<table>
+		<tr>
+			<th colspan="5">Total de Apuestas: {{ a2 }}</th>
+		<tr>
+		{% regroup a1 by user as user_list %}
+		{% for user in user_list %}
+			<tr style="background:rgba(255,255,255,0.5)">
+				<th colspan="5">{{ user.grouper }}</th>
+			</tr>
+			{% for item in user.list %}
+				<tr style="background:{% cycle '#DCDCF0' '#FFFFF0' %}">
+					<td>{{ item.local }}</td>
+					<td>VS</td>
+					<td>{{ item.visita }}</td>
+					<td>{{ item.pro }}</td>
+				</tr>
+				<tr style="background:rgba(150,200,255,0.5)">
+					{% if forloop.last %}
+					<th colspan="5">Usuario {{ item.user }} total aciertos: {{ forloop.counter }}</th>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		{% endfor %}
+	</table>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block contenido %}
+{% if now != 'Friday' and now != 'Saturday' and now != 'Sunday' %}
+	{% if msg == 'no' %}
+		{% if p2 > 0 %}
+			<form id="form" name="form" method="post" action="/savepronostico/">{% csrf_token %}
+				<table>
+				{% regroup juegos by fkfecha as fecha_list %}
+					{% for fecha in fecha_list %}
+						<tr style="background:rgba(255,255,255,0.5)">
+							<th colspan="4">{{ fecha.grouper }}</th>
+						</tr>
+						<tr style="background:rgba(255,255,255,0.5)">
+							<th>LOCAL</th>
+							<td></td>
+							<th>VISITA</th>
+							<th>RESULTADO</th>
+						</tr>
+						{% for item in fecha.list %}
+							<input type="hidden" id="juego" name="juego[]" value="{{item.id}}" />
+							<tr style="background:{% cycle '#DCDCF0' '#FFFFF0' %} ">
+								<td>{{ item.fklocal }}</td>
+								<td> VS </td>
+								<td>{{ item.fkvisita }}</td>
+								<td>
+									<select id="pro" name="pro[]" >
+										{% for r in res %}
+											{% if item.fkres_id == r.id %}
+												<option selected value="{{r.id}}">{{r.desres}}</option>
+											{% elif item.fkres_id == r.id %}
+												<option selected value="{{r.id}}">{{r.desres}}</option>
+											{% elif item.fkres_id == r.id %}
+												<option selected value="{{r.id}}">{{r.desres}}</option>
+											{% else %}
+												<option value="{{r.id}}">{{r.desres}}</option>
+											{% endif %}
+										{% endfor %}
+									</select>
+								</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+					<tr>
+						<td colspan="4"><input class="boton" type="submit" value="Grabar Pronostico" /></td>
+					</tr>
+				</table>
+			</from>
+		{% else %}
+			<h3 class="error">No pose puntos para realizar los pronosticos - Favor realize su carga contactando con el administrador del sitio</h3>
+		{% endif %}
+	{% else %}
+		<h3 class="error">Usted ya realizo su pronostico</h3>
+	{% endif%}
+{% else %}
+	<h3 class="error">Se agoto el tiempo para realizar los pronosticos </h3>
+{% endif %}
+{% endblock %}

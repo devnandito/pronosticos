@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<table>
+		{% regroup pronosticos by fkjuego.fkfecha as fecha_list %}
+		{% for fecha in fecha_list %}
+			<tr style="background:rgba(255,255,255,0.5)">
+				<th colspan="5">{{ fecha.grouper }}</th>
+			</tr>
+			<tr style="background:rgba(255,255,255,0.5)">
+				<th>Gana Local</th>
+				<th>LOCAL</th>
+				<th>Empate</th>
+				<th>VISITA</th>
+				<th>Gana Visita</th>
+			</tr>
+			{% for item in fecha.list %}
+				<tr style="background:{% cycle '#DCDCF0' '#FFFFF0' %} ">
+					<td>
+						{% if item.fkpro_id == 2 %}
+							<input id="check" name="check{{item.id}}[]" checked type="checkbox" value="2" />
+						{% else %}
+							<input id="check" name="check{{item.id}}[]" type="checkbox" />
+						{% endif %}
+					</td>
+					<td>{{ item.fkjuego.fklocal }}</td>
+					<td>
+						{% if item.fkpro_id == 1 %}
+							<input id="check" name="check{{item.id}}[]" checked type="checkbox" value="1" />
+						{% else %}
+							<input id="check" name="check{{item.id}}[]" type="checkbox" />
+						{% endif %}
+					</td>
+					<td>{{ item.fkjuego.fkvisita }}</td>
+					<td>
+						{% if item.fkpro_id == 3 %}
+							<input id="check" name="check{{item.id}}[]" checked type="checkbox" value="3" />
+						{% else %}
+							<input id="check" name="check{{item.id}}[]" type="checkbox" />
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		{% endfor %}
+	</table>
+{% endblock %}

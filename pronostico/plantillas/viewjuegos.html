@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<table>
+		{% regroup juegos by fkfecha as fecha_list %}
+		{% for fecha in fecha_list %}
+			<tr style="background:rgba(255,255,255,0.5)">
+				<th colspan="5">Total apuesta {{ fecha.grouper }} = {{ a2 }}</th>
+			</tr>
+			<tr style="background:rgba(255,255,255,0.5)">
+				<th>LOCAL</th>
+				<th></th>
+				<th>VISITA</th>
+				<th>RESULTADO</th>
+			</tr>
+			{% for item in fecha.list %}
+				<tr style="background:{% cycle '#DCDCF0' '#FFFFF0' %} ">
+					<td>{{ item.fklocal|upper }}</td>
+					<td>VS</td>
+					<td>{{ item.fkvisita|upper }}</td>
+					<td>{{ item.fkres }}</td>
+				</tr>
+			{% endfor %}
+		{% endfor %}
+		<tr>
+			<th colspan="5">
+				<div class="pagination">
+					<span class="setep-links">
+						{% if juegos.has_previous %}
+							<a href="?page={{ juegos.previous_page_number }}"><img src="{{STATIC_URL}}img/back.png" /></a>
+						{% endif %}
+						<span class="current">
+							Pagina {{ juegos.number }} de {{ juegos.paginator.num_pages }}
+						</span>
+						{% if juegos.has_next %}
+							<a href="?page={{ juegos.next_page_number }}"><img src="{{STATIC_URL}}img/next.png" /></a>
+						{% endif %}
+					</span>
+				</div>
+			</th>
+		</tr>
+	</table>
+{% endblock %}

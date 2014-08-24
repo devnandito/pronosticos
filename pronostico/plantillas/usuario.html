@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block contenido %}
+	</form>
+	<form id='form' method='post' action=''>{% csrf_token %}
+			<table class="table1">
+				<tr>
+					<th colspan="2">USUARIO</th>
+				</tr>
+				<tr>
+					<td>Nombre:</td>
+					<td><div id="Nombre">{{ form.first_name }}</div></td>
+				</tr>
+				<tr>
+					<td>Apellido:</td>
+					<td><div id="Apellido">{{ form.last_name }}</div></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><div id="Email">{{ form.email }}</div></td>
+				</tr>
+				<tr>
+					<td>Cambiar Password:</td>
+					<td><input type="password" id="pass" name="pass" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input class="boton" type='submit' value='Confirmar' /></td>
+				</tr>
+			</table>
+		</form>
+{% endblock %}

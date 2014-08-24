@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" href="{{STATIC_URL}}img/favicon.ico" />
+	<link rel="stylesheet" href="{{STATIC_URL}}css/styleslogin.css" />
+	<script src="{{STATIC_URL}}js/jquery.js"></script>
+	<script src="{{STATIC_URL}}js/prefixfree.min.js"></script>
+	<script src="{{STATIC_URL}}js/functions.js"></script>
+	<title>.::PRONOSTICOS::.</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/condiciones">Condiciones</a> | </li>
+				<li><a href="/registro">Resgistrarse</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section id="login">
+		<form id='formulario' method='post' action=''>{% csrf_token %}
+			<table>
+				<tr>
+					<th colspan="2"><h3>PRONOSTICOS</h3></th>
+				</tr>
+				<tr>
+					<td><label for="user">{{ form.username }}</label></td>
+				</tr>
+				<tr>
+					<td><label for="pass">{{ form.password }}</label></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input class="boton" type='submit' value='Iniciar sesión' /></td>
+				</tr>
+			</table>
+		</form>
+	</section>
+	<section>
+		{% block contenido %}{% endblock %}
+	</section>
+	<footer>
+		<section id="foot">
+			© Copyright Derechos Reservados 2013 - Email: fhersa@gmail.com Powered by Diego
+		</section>
+	</footer>
+</body>
+</html>

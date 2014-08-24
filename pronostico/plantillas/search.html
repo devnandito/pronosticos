@@ -1,0 +1,9 @@
+{{ msg }}
+{% if team.count > 0 %}
+	{% for item in team %}
+		<li>{{ item.desequipo }} </li>
+	{% endfor %}
+
+{% else %}
+	<li> No hay nada que mostrar </li>
+{% endif %}

@@ -1,0 +1,7 @@
+{% extends 'login.html'%}
+{% block contenido %}
+	<script>
+		alert('El usuario esta bloqueado, contactese con el administrador, para resolver el problema');
+		document.location.href='/login';
+	</script>
+{% endblock %}

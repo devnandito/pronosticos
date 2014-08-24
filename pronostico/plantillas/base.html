@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" href="{{STATIC_URL}}img/favicon.ico" />
+	<link rel="stylesheet" href="{{STATIC_URL}}css/styles.css" />
+	<script src="{{STATIC_URL}}js/jquery.js"></script>
+	<script src="{{STATIC_URL}}js/prefixfree.min.js"></script>
+	<script src="{{STATIC_URL}}js/functions.js"></script>
+	<title>.::PRONOSTICOS::.</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/dashboard"><img class="img1" src="{{STATIC_URL}}img/home.png" /></a></li>
+				<li><a href="/pronostico"><img class="img1" src="{{STATIC_URL}}img/games.png" /></a></li>
+				<li><a href="/viewpronostico"><img class="img1" src="{{STATIC_URL}}img/page.png" /></a></li>
+				<li><a href="/resultado"><img class="img1" src="{{STATIC_URL}}img/accept.png" /></a></li>
+				<li><a href="{% url 'principal.views.edituser' usuario %}"><img class="img1" src="{{STATIC_URL}}img/settings.png" /></a></li>
+				<li><a href="/logout"><img class="img1" src="{{STATIC_URL}}img/apagar.png" /></a></li>
+				<!--<li><a href="" onClick="mostrar('/errorpronostico');return false;">Test</a></li>-->
+			</ul>
+		</nav>
+		<hgroup>
+			<h1>PRONOSTICOS DEL FUTBOL PARAGUAYO</h1>
+			<h2>JUGA, DIVERTITE Y GANA</h2>
+		<hgroup>
+	</header>
+	<section>
+		<!--<h3>Search</h3>
+		{% csrf_token %}
+		<input type="text" id="search" name="search" />
+		<ul id="resultado">
+			
+		</ul>-->
+		<article id="contenido">
+			{% block contenido %}{% endblock %}
+		</article>
+		<div id="resultado">
+		</div>
+	</section>
+	<!--<footer>
+		<section id="foot">Web Design with Django 2013</section>
+	</footer>-->
+</body>
+</html>

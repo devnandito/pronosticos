@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<table>
+		{% regroup pronosticos by fkjuego.fkfecha as fecha_list %}
+		{% for fecha in fecha_list %}
+			<tr style="background:rgba(255,255,255,0.5)">
+				<th colspan="6">{{ fecha.grouper }}</th>
+			</tr>
+			<tr style="background:rgba(255,255,255,0.5)">
+				<th>Modificar</th>
+				<th>Gana Local</th>
+				<th>LOCAL</th>
+				<th>Empate</th>
+				<th>VISITA</th>
+				<th>Gana Visita</th>
+			</tr>
+			{% for item in fecha.list %}
+				<tr style="background:{% cycle '#DCDCF0' '#FFFFF0' %} ">
+					<td><a href="{% url 'principal.views.detjuego' item.fkjuego.id %}"><img src="{{STATIC_URL}}img/pencil.png" /></a></td>
+					<td>
+						<!--<div id="group{{ item.id }}">-->
+							{% if item.fkjuego.fkres_id == 2 %}
+								<input id="check" name="check{{item.id}}[]" checked type="checkbox" value="2" />
+							{% else %}
+								<input id="check" name="check{{item.id}}[]" type="checkbox" />
+							{% endif %}
+						<!--</div>-->
+					</td>
+					<td>{{ item.fkjuego.fklocal }}</td>
+					<td>
+						<!--<div id="group{{ item.id }}">-->
+							{% if item.fkjuego.fkres_id == 1 %}
+								<input id="check" name="check{{item.id}}[]" checked type="checkbox" value="1" />
+							{% else %}
+								<input id="check" name="check{{item.id}}[]" type="checkbox" />
+							{% endif %}
+						<!--</div>-->
+					</td>
+					<td>{{ item.fkjuego.fkvisita }}</td>
+					<td>
+						<!--<div id="group{{ item.id }}">-->
+							{% if item.fkjuego.fkres_id == 3 %}
+								<input id="check" name="check{{item.id}}[]" checked type="checkbox" value="3" />
+							{% else %}
+								<input id="check" name="check{{item.id}}[]" type="checkbox" />
+							{% endif %}
+						<!--</div>-->
+					</td>
+				</tr>
+			{% endfor %}
+		{% endfor %}
+	</table>
+{% endblock %}
